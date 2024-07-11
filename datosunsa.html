@@ -1,0 +1,94 @@
+<html>
+<!–- ESTE PROGRAMA FUE CREADO PARA CURIOSIAR Y USAR BASE DE DATOS V0.2
+AUTOR SOMBRA5445 -–>
+	<head>
+		<title>datos unsa</title>
+		<script type="text/javascript">
+		//para las libretas
+		function libretas(){
+			x = document.getElementById("cui").value;
+			var p1 = "http://extranet.unsa.edu.pe/sisacad/libretas/descarga.php?file=/var/temporal/Libreta_De_Notas_";
+			var p2 = "_.pdf&codal=";
+			var link = p1 + x +p2 +x;
+			document.getElementById("demo").innerHTML = "espere 5 segundos " +x;
+			setTimeout( dirigir(link), 5000 );
+		}
+		//redirigir
+		function dirigir(link) { window.location.href = link; }
+		//para las constancias
+		function constancia(){
+			x1 = document.getElementById("cui1").value;
+			y = document.getElementById("escuela").value;
+			var p1 = "http://extranet.unsa.edu.pe/sisacad/matint23prim/constancias/constancia_";
+			var link1 = p1 + y + "_" +x1 + ".pdf";
+			document.getElementById("demo1").innerHTML = "espere 5 segundos "+x1+" "+y;
+			setTimeout( dirigir(link1), 5000 );
+		}
+		</script>
+	</head>
+	<body>
+	<h3>libretas unsa<h3>
+		<form>
+			<h5>introduzca el Cui</h5>
+			<input type="number" id="cui"><br>
+			<button type="button" onclick="libretas()">descargar</button>
+		</form>
+	<p id="demo" ></p>	
+	<h3>constancias unsa<h3>
+	<form>
+	<input type="number" id="cui1"><br>
+	<select name="escuela" id="escuela">
+        <option value="401"> AGRONOMÍA </option>
+		<option value="402"> BIOLOGÍA </option>
+		<option value="403"> CIENCIAS DE LA NUTRICIÓN </option>
+		<option value="404"> INGENIERÍA PESQUERA </option>
+		<option value="405"> ENFERMERÍA </option>
+		<option value="406"> MEDICINA </option>
+		<option value="431"> ARQUITECTURA </option>
+		<option value="432"> FÍSICA </option>
+		<option value="433"> MATEMÁTICAS </option>
+		<option value="434"> QUÍMICA </option>
+		<option value="435"> INGENIERÍA GEOFÍSICA </option>
+		<option value="436"> INGENIERÍA GEOLÓGICA </option>
+		<option value="437"> INGENIERÍA ELECTRÓNICA </option>
+		<option value="438"> INGENIERÍA INDUSTRIAL </option>
+		<option value="439"> INGENIERÍA MECÁNICA ELÉCTRICA </option>
+		<option value="440"> INGENIERÍA CIVIL </option>
+		<option value="441"> INGENIERÍA METALÚRGICA </option>
+		<option value="442"> INGENIERÍA QUÍMICA </option>
+		<option value="443"> INGENIERÍA DE MINAS </option>
+		<option value="444"> INGENIERÍA DE INDUSTRIAS ALIMENTARIAS </option>
+		<option value="445"> INGENIERÍA DE MATERIALES </option>
+		<option value="446"> INGENIERÍA DE SISTEMAS </option>
+		<option value="447"> INGENIERÍA ELÉCTRICA </option>
+		<option value="448"> INGENIERÍA MECÁNICA </option>
+		<option value="449"> INGENIERÍA AMBIENTAL </option>
+		<option value="450"> CIENCIA DE LA COMPUTACIÓN </option>
+		<option value="451"> INGENIERÍA SANITARIA </option>
+		<option value="452"> INGENIERÍA EN TELECOMUNICACIONES </option>
+		<option value="461"> EDUCACIÓN </option>
+		<option value="463"> HISTORIA </option>
+		<option value="464"> SOCIOLOGÍA </option>
+		<option value="465"> TRABAJO SOCIAL </option>
+		<option value="466"> ANTROPOLOGÍA </option>
+		<option value="467"> ADMINISTRACIÓN </option>
+		<option value="468"> CONTABILIDAD </option>
+		<option value="469"> DERECHO </option>
+		<option value="470"> ECONOMÍA </option>
+		<option value="471"> ARTES </option>
+		<option value="472"> FILOSOFÍA </option>
+		<option value="473"> LITERATURA Y LINGÜÍSTICA </option>
+		<option value="474"> PSICOLOGÍA </option>
+		<option value="475"> RELACIONES INDUSTRIALES </option>
+		<option value="478"> CIENCIAS DE LA COMUNICACIÓN </option>
+		<option value="479"> TURISMO Y HOTELERÍA </option>
+		<option value="486"> FINANZAS </option>
+		<option value="487"> MARKETING </option>
+		<option value="488"> BANCA Y SEGUROS </option>
+		<option value="489"> GESTIÓN </option>       
+		</select><br>
+		<button type="button" onclick="constancia()">descargar</button>		</form>
+		<p id="demo1" ></p>
+
+	</body>	
+</html>

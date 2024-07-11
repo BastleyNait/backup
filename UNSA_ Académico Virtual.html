@@ -1,0 +1,425 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0014)about:internet -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>UNSA: Académico Virtual</title>
+<style>
+  .datos {
+	border: 1px solid #000000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+	background-color: #000000;
+}
+.menu {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+	background-color: #999999;
+}
+.menuactivo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #C6D6F0;
+	border-top: none #5E93D5;
+	border-right: 1px solid #5E93D5;
+	border-bottom: 1px solid #5E93D5;
+	border-left: none #5E93D5;
+	font-weight: normal;
+}
+.sinborde {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+.sinbordeadv {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #990000;
+	background-color: #FFFFFF;
+}
+.titulo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #666666;
+}
+.anos {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	border: 1px solid #990000;
+	background-color: #FFFFFF;
+}
+.botonenvio {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #C6D6F0;
+	border-top: 1px solid #999999;
+	border-right: 2px solid #000000;
+	border-bottom: 2px solid #000000;
+	border-left: 1px solid #999999;
+	font-weight: normal;
+}
+a:link.enlace {
+	color: #000000;
+	text-decoration: none;
+	background-color: #FFFFFF;
+}
+a:visited.enlace {
+	color: #000000;
+	text-decoration: none;
+}
+a:active.enlace {
+	color: #990000;
+	text-decoration: underline;
+}
+a:hover.enlace {
+	color: #1F5989;
+	text-decoration: none;
+	background-color: #C6D6F0;
+}
+.titucont {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #990000;
+}
+.nombre {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+	background-color: #999999;
+	border: 1px solid #000000;
+
+}
+.datosexist {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #E6E6E6;
+	border: 1px solid #CCCCCC;
+}
+.datosmodif {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #666666;
+	font-style: italic;
+
+}
+.datosform {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+.nota {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: maroon;
+	font-size: 11px;
+	font-weight: bold;
+}
+.exito {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #0099CC;
+	background-color: #FFFFFF;
+	border: 1px solid #336699;
+	font-size: 12px;
+	font-weight: bold;
+}
+.advertencia {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #990000;
+	background-color: #FFFFFF;
+	border: 1px solid #000000;
+	font-size: 12px;
+	font-weight: bold;
+}
+.anosvisit {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+	border: 1px solid #990000;
+	background-color: #990000;
+}
+.menscred {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	font-style: italic;
+
+}
+.menscredcont {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #990000;
+	border: 1px solid #999999;
+	text-align: center;
+	font-weight: bold;
+}
+
+.msje {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.constancia {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #000000;
+}
+.titulogris {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #DFDFDF;
+	border: 1px solid #000000;
+}
+.detalle {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+.detalledatos {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+	border: 1px solid #000000;
+}
+.titulodetalle {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #EEEEEE;
+	border: 1px solid #000000;
+	text-align: center;
+	font-weight: bold;
+}
+a:link.hora {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #990000;
+	text-decoration: none;
+}
+a:hover.hora {
+	text-decoration: underline;
+	color: #990000;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+}
+a:visited.hora {
+	color: #990000;
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+}
+a:active.hora {
+	color: #990000;
+	text-decoration: none;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+}
+tr.S
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #E4E9FF;
+}
+
+tr.D
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+</style>
+<link href="./UNSA_ Académico Virtual_files/estilos.css" rel="stylesheet" type="text/css">
+<script>
+// Mustra ventana de ayuda
+   function ver_ayuda()
+   {
+      var wi = 377;
+      var he = 270;
+      var posx = 1;
+      var posy = 1;
+      win_help = open("matricula/sos/index_ayuda.htm","win_help","scrollbars=no,toolbar=no,resizable=no,width="+wi+",height="+he+",left="+posx+",top="+posy);
+   }
+
+   function irnuevo()
+   {
+     document.frm_usuario.hid_logout.value="1";
+     document.frm_usuario.submit();
+   }
+
+   function SoloNumeros(texto)
+   {
+     if(texto.value.search(/^[0-9]+$/) == -1 || texto.value=="" )
+     {
+                alert("Dato Incorrecto, Ingrese solo Numeros!!!");
+                texto.value="";
+     }
+   }
+
+   function SoloLetras(texto)
+   {
+     if(texto.value.search(/^[a-z]+$/) == -1 || texto.value=="" )
+     {
+                alert("Dato Incorrecto, Ingrese solo Letras!!!");
+                texto.value="";
+     }
+   }
+  
+   function verifica()
+   {
+     frm = document.frm_usuario;
+     cui = frm.logi_oper;
+     dni = frm.pass_oper;
+     selec=frm.escuela.selectedIndex;
+
+     /*if(cui.value.search(/^[a-z]+$/) == -1 || cui.value=="" || (cui.value.length>0 && cui.value.length<8))
+     {
+       alert("El USUARIO debe tener 8 letras");
+       cui.value = "";
+     }
+     else if(dni.value.search(/^[0-9]+$/) == -1 || dni.value=="" || (dni.value.length>0 && dni.value.length<8))
+     {
+       alert("La CLAVE solo puede tener 8 Numeros");
+       dni.value = "";
+     }
+     else if( frm.escuela.options[selec].value=="" )
+       alert ("Seleccione una Escuela"); 
+     else*/
+     frm.submit();
+   }
+
+</script>
+</head>
+
+<body bgcolor="#F7F7F7" vlink="#000000" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<div style="margin:10 auto; width:100%; background:url(imagenes/lineas.jpg) repeat-y">
+
+<form name="frm_usuario" method="post" action="http://extranet.unsa.edu.pe/sisacad/matint23bseg/acad_usuario.php">
+<input type="HIDDEN" name="hid_logout">
+
+<table border="0" cellpadding="0" cellspacing="0" style=" width:100%; height:auto">
+  <tbody><tr>
+    <td"></td>
+  </tr>
+  <tr>
+    <td align="center">
+
+	<table border="0" align="center" cellpadding="1" cellspacing="3">
+    <tbody ><tr>
+      <td class="nombre">Usuario : </td>
+      <td><input name="logi_oper" type="text" class="anos" size="15" maxlength="8" onblur="javascript:SoloLetras(this)"></td>
+    </tr>
+    <tr>
+      <td class="nombre">Clave : </td>
+      <td><input name="pass_oper" type="password" class="anos" size="15" maxlength="8" onblur="javascript:SoloNumeros(this)"></td>
+    </tr>
+    <tr>
+      <td class="nombre">Escuela : </td>
+      <td>
+        <select name="escuela" class="anos">
+        <option value=""> - - - - - - Seleccione Escuela - - - - - -  </option>
+		<option value="401"> AGRONOMÍA </option>
+				<option value="402"> BIOLOGÍA </option>
+				<option value="403"> CIENCIAS DE LA NUTRICIÓN </option>
+				<option value="404"> INGENIERÍA PESQUERA </option>
+				<option value="405"> ENFERMERÍA </option>
+				<option value="406"> MEDICINA </option>
+				<option value="431"> ARQUITECTURA </option>
+				<option value="432"> FÍSICA </option>
+				<option value="433"> MATEMÁTICAS </option>
+				<option value="434"> QUÍMICA </option>
+				<option value="435"> INGENIERÍA GEOFÍSICA </option>
+				<option value="436"> INGENIERÍA GEOLÓGICA </option>
+				<option value="437"> INGENIERÍA ELECTRÓNICA </option>
+				<option value="438"> INGENIERÍA INDUSTRIAL </option>
+				<option value="439"> INGENIERÍA MECÁNICA ELÉCTRICA </option>
+				<option value="440"> INGENIERÍA CIVIL </option>
+				<option value="441"> INGENIERÍA METALÚRGICA </option>
+				<option value="442"> INGENIERÍA QUÍMICA </option>
+				<option value="443"> INGENIERÍA DE MINAS </option>
+				<option value="444"> INGENIERÍA DE INDUSTRIAS ALIMENTARIAS </option>
+				<option value="445"> INGENIERÍA DE MATERIALES </option>
+				<option value="446"> INGENIERÍA DE SISTEMAS </option>
+				<option value="447"> INGENIERÍA ELÉCTRICA </option>
+				<option value="448"> INGENIERÍA MECÁNICA </option>
+				<option value="449"> INGENIERÍA AMBIENTAL </option>
+				<option value="450"> CIENCIA DE LA COMPUTACIÓN </option>
+				<option value="451"> INGENIERÍA SANITARIA </option>
+				<option value="452"> INGENIERÍA EN TELECOMUNICACIONES </option>
+				<option value="461"> EDUCACIÓN </option>
+				<option value="463"> HISTORIA </option>
+				<option value="464"> SOCIOLOGÍA </option>
+				<option value="465"> TRABAJO SOCIAL </option>
+				<option value="466"> ANTROPOLOGÍA </option>
+				<option value="467"> ADMINISTRACIÓN </option>
+				<option value="468"> CONTABILIDAD </option>
+				<option value="469"> DERECHO </option>
+				<option value="470"> ECONOMÍA </option>
+				<option value="471"> ARTES </option>
+				<option value="472"> FILOSOFÍA </option>
+				<option value="473"> LITERATURA Y LINGÜÍSTICA </option>
+				<option value="474"> PSICOLOGÍA </option>
+				<option value="475"> RELACIONES INDUSTRIALES </option>
+				<option value="478"> CIENCIAS DE LA COMUNICACIÓN </option>
+				<option value="479"> TURISMO Y HOTELERÍA </option>
+				<option value="486"> FINANZAS </option>
+				<option value="487"> MARKETING </option>
+				<option value="488"> BANCA Y SEGUROS </option>
+				<option value="489"> GESTIÓN </option>       
+                </select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right"><input type="submit" class="botonenvio" value="Ingresar" ></td>
+    </tr>
+    </tbody></table>
+
+	</td>
+  </tr>
+</tbody></table>
+</form>
+<table border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <!--<td valign="middle" class="datosform"><img src="imagenes/nada.gif" width="96" height="1"></td>-->
+    <td valign="middle" class="datosform"></td>
+    <td valign="middle" class="dato"></td>
+  </tr>
+  <tr>
+    <td></td></tr>
+  <tr>
+    <!-- <td align="right" valign="middle" class="datosform">Ayuda en l&iacute;nea&nbsp;</td>
+    <td valign="middle" class="datosform"><a href="javascript: ver_ayuda();"><img src="imagenes/sos.gif" border="0" align="absmiddle"></a> </td> -->
+    <td valign="middle" class="datosform"> &nbsp; </td>
+    <td valign="middle" class="datosform"> &nbsp; </td>
+    <td valign="middle" class="datosform">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td valign="middle" class="datosform"></td>
+    
+    <td valign="middle" class="nota" align="rigth">&nbsp;<br><br>
+    </td><td></td>
+
+  </tr>
+</tbody></table>
+
+<!--<script>document.frm_usuario.txt_login.focus();</script>-->
+
+</div>
+
+
+
+</body></html>

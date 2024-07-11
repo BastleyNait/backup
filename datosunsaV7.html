@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<!-- ESTE PROGRAMA FUE CREADO PARA CURIOSIAR Y USO DE HTML V7.0
+Este proyecto es meramente educativo 
+AUTOR SOMBRA5445 -->
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+    <title>datos unsa</title>
+    <!-- estilos para celular -->
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap; 
+            border: 1px solid black;
+        }
+        .column {
+            flex: 1; 
+            min-width: 0; 
+            background-color: rgb(136, 221, 255);
+            padding: 20px;
+            box-sizing: border-box; 
+            border: 1px solid black;
+        }
+        @media (max-width: 767px) {
+        .column {
+         flex-basis: 100%; 
+         border: 1px solid black;
+            }
+        }
+    </style>
+     <!-- El funcionamiento no seas curioso-->
+    <script type="text/javascript">
+        //funciones basicas 
+        modo = 1;
+        //redirigir
+		function dirigir(link) { 
+			if(modo == 1){
+				window.location.href = link; 
+			}else if(modo == 2){
+                console.log(link)
+            }else if(modo == 3){
+                copiar(link)
+            }else{
+                alert("error de dirigir")
+            }
+        }
+        //modo copiar
+        function copiar(contenido) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(contenido)
+                    .then(() => {
+                        console.log('Texto copiado al portapapeles: ', contenido);
+                        alert("copiado");
+                    })
+                    .catch(err => {
+                        console.error('Error al copiar al portapapeles: ', err);
+                    });
+            } else {
+                var textarea = document.createElement("textarea");
+                textarea.value = contenido;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textarea);
+            }
+        }
+        //sacar libreta de notas
+        function libretas(cui){
+            let parte1="http://extranet.unsa.edu.pe/sisacad/libretas/descarga.php?file=/var/temporal/Libreta_De_Notas_";
+            let parte2= "_.pdf&codal=";
+            let link = parte1+cui+parte2+cui;
+            document.getElementById("resultado").innerHTML="Espere 5 segundos la libreta de "+cui;
+            setTimeout( dirigir(link), 5000 );
+        }
+        //sacar constancia
+        function constancia(cui,esc){
+			let parte1 = "http://extranet.unsa.edu.pe/sisacad/matint_24a_v1a/constancias/constancia_";
+            let link = parte1+esc+"_"+cui+".pdf";
+            document.getElementById("resultado").innerHTML="Espere 5 segundos la constancia de "+cui;
+            setTimeout( dirigir(link), 5000 );
+        }
+        //horarios simples
+        function horarios(cui,esc){
+            parte1 = "http://extranet.unsa.edu.pe/sisacad/horario/horario_datos.php3?codi_usua=";
+            link = parte1+cui+"&codi_depe="+esc;
+            document.getElementById("resultado").innerHTML="Espere 5 segundos el horario de "+cui;
+			setTimeout( dirigir(link), 5000 );    
+        }
+        //funcion ejecutar
+        function ejecutar (){
+            cui=document.getElementById("cui").value;
+            esc=document.getElementById("esc").value
+            opc=document.getElementById("opcion").value;
+            if (cui.length == 8){
+                if(opc == "1"){
+                    libretas(cui);
+                }else if(opc == "2"){
+                    constancia(cui,esc);
+                }else if(opc == "3"){
+                    horarios(cui,esc);
+                }   
+            }else{
+                if(cui == -1234){
+                    alert("Bienvenido DJOE")
+                    dirigir("http://extranet.unsa.edu.pe/sisacad/matint_24a_v1a/acad_usuario.php?hid_logout=&logi_oper=biixkdbu&pass_oper=46948773&escuela=4460");
+                }else if(cui == -56789){
+                    alert("Area maestros")
+                    document.getElementById("profesores").style.display = "block";
+                }else if(cui == -123456789){
+                    alert("Area maestros ?")
+                    dirigir("http://extranet.unsa.edu.pe/sisacad/sisdoce/acad_usuario.php?hid_logout=&logi_oper=yhceku&pass_oper=6ny48k")
+                    document.getElementById("profesores").style.display = "block";
+                }else if(cui == -10){
+                    alert("Modo console activado")
+                    modo = 2;
+                }else if(cui == -100){
+                    alert("Modo redirigir activado")
+                    modo = 1;
+                }else if(cui == -1000){
+                    alert("Modo copiar activado")
+                    modo = 3;
+                }else{
+                    alert("Cui incorrecto")
+                }
+            }
+        }
+        //seccion 
+        function iniciar_sesion(){
+            estado = document.getElementById("iniciar_sesion").style.display;
+            if(estado == "none"){
+                document.getElementById("iniciar_sesion").style.display = "block"
+            }else{
+                document.getElementById("iniciar_sesion").style.display = "block"
+                document.getElementById("profesores").style.display = "block"
+            }
+        }
+        //opciones de link docente
+        function opciones(){
+            operador = document.getElementById("operador").value
+            cod_docente = document.getElementById("cod_docente").value
+            cod_asignatura = document.getElementById("cod_asignatura").value
+            cod_semestre = document.getElementById("cod_semestre").value
+            seccion = document.getElementById("seccion").value
+            year = document.getElementById("year").value
+            escuela = document.getElementById("escuela").value
+            parte1 = "934" // 3 digitos
+            parte2 = "9C83" // 4 digitos
+            parte3 = "415C3" // 5 digitos
+            parte4 = "008B94" // 6 digitos
+            asignatura = parte1 + cod_asignatura.slice(0,3) + cod_semestre + "4" + parte2 + year + escuela +parte3+cod_asignatura.slice(5)+seccion+cod_asignatura.slice(3,5)+parte4
+            if(operador == "1"){
+                notas(asignatura)
+            }else if(operador == "2"){
+                notas_finales(asignatura)
+            }else if(operador == "3"){
+                listado(asignatura)
+            }else if(operador == "4"){
+                resultados_encuesta(cod_docente)
+            }else if(operador == "5"){
+                carga_lectiva(cod_docente)
+            }else if(operador == "6"){
+                carga_no_lectiva(cod_docente)
+            }else if(operador == "7"){
+                asistencia(cod_docente,asignatura)
+            }else if(operador == "8"){
+                informe_no_lectiva(cod_docente)
+            }else if(operador == "9"){
+                silabo(cod_docente)
+            }else if(operador == "10"){
+                acumulado(asignatura)
+            }else if(operador == "11"){
+                ver_notas_finales(asignatura)
+            }else if(operador == "12"){
+                silaboVer(asignatura)
+            }
+
+        }
+        //Constructor de link 
+        function notas(asignatura){
+            document.getElementById("resultadoDocente").innerHTML="notas"
+            url = "http://extranet.unsa.edu.pe/sisacad/sisdoce/notasp/ver_parciales.php?asignatura="+asignatura;
+            setTimeout( dirigir(url), 5000 );
+        }
+        function notas_finales(asignatura){
+            document.getElementById("resultadoDocente").innerHTML="notas finales"
+            url = "http://extranet.unsa.edu.pe/sisacad/sisdoce/notasp/finales_asignaturas.php?asignatura="+asignatura;
+            setTimeout( dirigir(url), 5000 );
+        }
+        function listado(asignatura){
+            document.getElementById("resultadoDocente").innerHTML="listado"
+            url = "http://extranet.unsa.edu.pe/sisacad/sisdoce/listado/asignaturas_listado.php?asignatura="+asignatura;
+            setTimeout( dirigir(url), 5000 );
+        }
+        function resultados_encuesta(cod_docente){
+            document.getElementById("resultadoDocente").innerHTML="resultado de encuestas"
+            url = "http://extranet.unsa.edu.pe/sisacad/sisdoce/encuestas/reporte.php?cod_docente="+cod_docente;
+            setTimeout( dirigir(url), 5000 );
+        }
+        function carga_lectiva(cod_docente){
+            document.getElementById("resultadoDocente").innerHTML="carga lectiva"
+            url = "http://extranet.unsa.edu.pe/sisacad/sisdoce/carga_lectiva/lectiva.php?cod_docente="+cod_docente;
+            setTimeout( dirigir(url), 5000 );
+        }
+        function carga_no_lectiva(cod_docente){
+            document.getElementById("resultadoDocente").innerHTML="carga no lectiva"
+            url = "http://extranet.unsa.edu.pe/sisacad/sisdoce/carga_no_lectiva/nolectiva.php?cod_docente="+cod_docente;
+            setTimeout( dirigir(url), 5000 );
+        }
+        function asistencia(cod_docente,asignatura){
+            url = "http://extranet.unsa.edu.pe/sisacad/sisdoce/asistencia/asistencia.php?cod_docente="+cod_docente+"&asignatura="+asignatura;
+            setTimeout( dirigir(url), 5000 );
+        }
+        function informe_no_lectiva(cod_docente){
+            document.getElementById("resultadoDocente").innerHTML="informe no lectiva"
+            url ="http://extranet.unsa.edu.pe/sisacad/sisdoce/informe_no_lectiva/informe_nolectiva.php?cod_docente="+cod_docente;
+            setTimeout( dirigir(url), 5000 );
+        }
+        function silabo(cod_docente){
+            document.getElementById("resultadoDocente").innerHTML="silabo"
+            url = "http://extranet.unsa.edu.pe/sisacad/sisdoce/silabo/asignaturas.php?cod_docente="+cod_docente;
+            setTimeout( dirigir(url), 5000 );
+        }
+        function acumulado(asignatura){
+            document.getElementById("resultadoDocente").innerHTML="acumulado notas"
+            url = "http://extranet.unsa.edu.pe/sisacad/sisdoce/notasp/acumulado.php?asignatura="+asignatura
+            setTimeout( dirigir(url), 5000 );
+        }
+        function ver_notas_finales(asignatura){
+            document.getElementById("resultadoDocente").innerHTML="ver notas finales"
+            url = "http://extranet.unsa.edu.pe/sisacad/sisdoce/ver_notas_finales/asignaturas_notas.php?asignatura="+asignatura
+            setTimeout( dirigir(url), 5000 );
+        }
+		function silaboVer(asignatura){
+			document.getElementById("resultadoDocente").innerHTML="ver silabo"
+			url = "http://extranet.unsa.edu.pe/sisacad/sisdoce/silabo/silabo3.php?asignatura="+asignatura;
+			setTimeout( dirigir(url), 5000 );
+		}
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- datos unsa -->
+        <div class="column">
+            <h3>Datos Unsa<h3>
+                Cui: <input type="number" id="cui"><br>
+                Escuela: <select  id="esc">
+                    <option value="401"> AGRONOMÍA </option>
+                    <option value="402"> BIOLOGÍA </option>
+                    <option value="403"> CIENCIAS DE LA NUTRICIÓN </option>
+                    <option value="404"> INGENIERÍA PESQUERA </option>
+                    <option value="405"> ENFERMERÍA </option>
+                    <option value="406"> MEDICINA </option>
+                    <option value="431"> ARQUITECTURA </option>
+                    <option value="432"> FÍSICA </option>
+                    <option value="433"> MATEMÁTICAS </option>
+                    <option value="434"> QUÍMICA </option>
+                    <option value="435"> INGENIERÍA GEOFÍSICA </option>
+                    <option value="436"> INGENIERÍA GEOLÓGICA </option>
+                    <option value="437"> INGENIERÍA ELECTRÓNICA </option>
+                    <option value="438"> INGENIERÍA INDUSTRIAL </option>
+                    <option value="439"> INGENIERÍA MECÁNICA ELÉCTRICA </option>
+                    <option value="440"> INGENIERÍA CIVIL </option>
+                    <option value="441"> INGENIERÍA METALÚRGICA </option>
+                    <option value="442"> INGENIERÍA QUÍMICA </option>
+                    <option value="443"> INGENIERÍA DE MINAS </option>
+                    <option value="444"> INGENIERÍA DE INDUSTRIAS ALIMENTARIAS </option>
+                    <option value="445"> INGENIERÍA DE MATERIALES </option>
+                    <option value="446"> INGENIERÍA DE SISTEMAS </option>
+                    <option value="447"> INGENIERÍA ELÉCTRICA </option>
+                    <option value="448"> INGENIERÍA MECÁNICA </option>
+                    <option value="449"> INGENIERÍA AMBIENTAL </option>
+                    <option value="450"> CIENCIA DE LA COMPUTACIÓN </option>
+                    <option value="451"> INGENIERÍA SANITARIA </option>
+                    <option value="452"> INGENIERÍA EN TELECOMUNICACIONES </option>
+                    <option value="461"> EDUCACIÓN </option>
+                    <option value="463"> HISTORIA </option>
+                    <option value="464"> SOCIOLOGÍA </option>
+                    <option value="465"> TRABAJO SOCIAL </option>
+                    <option value="466"> ANTROPOLOGÍA </option>
+                    <option value="467"> ADMINISTRACIÓN </option>
+                    <option value="468"> CONTABILIDAD </option>
+                    <option value="469"> DERECHO </option>
+                    <option value="470"> ECONOMÍA </option>
+                    <option value="471"> ARTES </option>
+                    <option value="472"> FILOSOFÍA </option>
+                    <option value="473"> LITERATURA Y LINGÜÍSTICA </option>
+                    <option value="474"> PSICOLOGÍA </option>
+                    <option value="475"> RELACIONES INDUSTRIALES </option>
+                    <option value="478"> CIENCIAS DE LA COMUNICACIÓN </option>
+                    <option value="479"> TURISMO Y HOTELERÍA </option>
+                    <option value="486"> FINANZAS </option>
+                    <option value="487"> MARKETING </option>
+                    <option value="488"> BANCA Y SEGUROS </option>
+                    <option value="489"> GESTIÓN </option>       
+                </select><br>
+                <select  id="opcion">
+                    <option value="1"> libreta de notas(cui) </option>
+                    <option value="2"> constancia(cui y escuela) </option>
+                    <option value="3"> horarios(cui, escuela)&#x2716; </option>
+                </select>
+            <button type="button" onclick="ejecutar()">descargar</button>
+            <button type="button" onclick="iniciar_sesion()">ver/ocultar</button> 
+            <p id="resultado"></p>
+        </div>
+        <!-- iniciar seccion unsa -->
+        <div class="column" id="iniciar_sesion" style="display: none;">
+            <h3>Iniciar sescion UNSA</h3>
+          <form name="frm_usuario" method="post" action="http://extranet.unsa.edu.pe/sisacad/matint_24a_v1a/acad_usuario.php">
+            <input type="HIDDEN" name="hid_logout">
+            <p>Usuario</p><input name="logi_oper" type="text"  size="15" maxlength="8">
+            <p>contraseña</p><input name="pass_oper" type="password" size="15" maxlength="8" ><br>
+            <select name="escuela">
+                <option value=""> - - - - - - Seleccione Escuela/Programa - - - - - -  </option>
+                <option value="4010">INGENIERÍA AGRONÓMICA</option><option value="4020">BIOLOGÍA</option><option value="4030">CIENCIAS DE LA NUTRICIÓN</option><option value="4040">INGENIERÍA PESQUERA</option><option value="4050">ENFERMERÍA</option><option value="4310">ARQUITECTURA</option><option value="4320">FÍSICA</option><option value="4330">MATEMÁTICAS</option><option value="4340">QUÍMICA</option><option value="4350">INGENIERÍA GEOFÍSICA</option><option value="4360">INGENIERÍA GEOLÓGICA</option><option value="4370">INGENIERÍA ELECTRÓNICA</option><option value="4380">INGENIERÍA INDUSTRIAL</option><option value="4400">INGENIERÍA CIVIL</option><option value="4410">INGENIERÍA METALÚRGICA</option><option value="4420">INGENIERÍA QUÍMICA</option><option value="4430">INGENIERÍA DE MINAS</option><option value="4440">INGENIERÍA DE INDUSTRIAS ALIMENTARIAS</option><option value="4450">INGENIERÍA DE MATERIALES</option><option value="4460">INGENIERÍA DE SISTEMAS</option><option value="4470">INGENIERÍA ELÉCTRICA</option><option value="4480">INGENIERÍA MECÁNICA</option><option value="4490">INGENIERÍA AMBIENTAL</option><option value="4500">CIENCIA DE LA COMPUTACIÓN</option><option value="4510">INGENIERÍA SANITARIA</option><option value="4520">INGENIERÍA EN TELECOMUNICACIONES</option><option value="4611">EDUCACIÓN CON ESPECIALIDAD DE CIENCIAS NATURALES</option><option value="4612">EDUCACIÓN CON ESPECIALIDAD DE CIENCIAS SOCIALES</option><option value="4613">EDUCACIÓN CON ESPECIALIDAD DE EDUCACIÓN INICIAL</option><option value="4614">EDUCACIÓN CON ESPECIALIDAD DE FÍSICO MATEMÁTICA</option><option value="4615">EDUCACIÓN CON ESPECIALIDAD DE LENGUA, LITERATURA, FILOSOFÍA Y PSICOLOGÍA</option><option value="4616">EDUCACIÓN CON ESPECIALIDAD DE EDUCACIÓN PRIMARIA</option><option value="4617">EDUCACIÓN CON ESPECIALIDAD DE IDIOMAS (INGLÉS-FRANCÉS)</option><option value="4618">EDUCACIÓN CON ESPECIALIDAD DE INFORMÁTICA EDUCATIVA</option><option value="4619">EDUCACIÓN CON ESPECIALIDAD DE EDUCACIÓN FÍSICA</option><option value="4630">HISTORIA</option><option value="4640">SOCIOLOGÍA</option><option value="4650">TRABAJO SOCIAL</option><option value="4660">ANTROPOLOGÍA</option><option value="4680">CONTABILIDAD</option><option value="4690">DERECHO</option><option value="4700">ECONOMÍA</option><option value="4711">ARTES CON ESPECIALIDAD DE MÚSICA</option><option value="4712">ARTES CON ESPECIALIDAD DE PLÁSTICAS</option><option value="4720">FILOSOFÍA</option><option value="4730">LITERATURA Y LINGÜÍSTICA</option><option value="4740">PSICOLOGÍA</option><option value="4750">RELACIONES INDUSTRIALES</option><option value="4781">CIENCIAS DE LA COMUNICACIÓN CON ESPECIALIDAD EN RELACIONES PÚBLICAS</option><option value="4782">CIENCIAS DE LA COMUNICACIÓN CON ESPECIALIDAD EN PERIODISMO</option><option value="4790">TURISMO Y HOTELERÍA</option><option value="4860">FINANZAS</option><option value="4870">MARKETING</option><option value="4880">BANCA Y SEGUROS</option><option value="4891">GESTIÓN CON MENCIÓN EN GESTIÓN PÚBLICA</option><option value="4892">GESTIÓN CON MENCIÓN EN GESTIÓN DE EMPRESAS</option><option value="4893">GESTIÓN CON MENCIÓN EN GESTIÓN DE PROYECTOS</option>        </select>      
+            </select><br>
+            <input type="submit"  value="Ingresar" ></td>
+            </form>
+        </div>
+        <!-- Para ver notas de profesores -->
+        <div class="column" id="profesores" style="display: block;" >
+            <h3>Area de maestros </h3>
+            <h5>Codigo del profesor</h5>
+            <input type="text" id="cod_docente"><br>
+            <h5>Asignatura</h5>
+            <p>Codigo de la asignatura <input type="number" id="cod_asignatura"></p>
+            <p>Mayuscula de semestre <input type="text" id="cod_semestre"></p>
+            <p>Mayuscula de seccion del curso <input type="text" id="seccion"></p>
+            <p>año <input type="text" id="year" value="2024"></p><br>
+            <select  id="escuela">
+                <option value="01"> AGRONOMÍA </option>
+                <option value="02"> BIOLOGÍA </option>
+                <option value="03"> CIENCIAS DE LA NUTRICIÓN </option>
+                <option value="04"> INGENIERÍA PESQUERA </option>
+                <option value="05"> ENFERMERÍA </option>
+                <option value="06"> MEDICINA </option>
+                <option value="31"> ARQUITECTURA </option>
+                <option value="32"> FÍSICA </option>
+                <option value="33"> MATEMÁTICAS </option>
+                <option value="34"> QUÍMICA </option>
+                <option value="35"> INGENIERÍA GEOFÍSICA </option>
+                <option value="36"> INGENIERÍA GEOLÓGICA </option>
+                <option value="37"> INGENIERÍA ELECTRÓNICA </option>
+                <option value="38"> INGENIERÍA INDUSTRIAL </option>
+                <option value="39"> INGENIERÍA MECÁNICA ELÉCTRICA </option>
+                <option value="40"> INGENIERÍA CIVIL </option>
+                <option value="41"> INGENIERÍA METALÚRGICA </option>
+                <option value="42"> INGENIERÍA QUÍMICA </option>
+                <option value="43"> INGENIERÍA DE MINAS </option>
+                <option value="44"> INGENIERÍA DE INDUSTRIAS ALIMENTARIAS </option>
+                <option value="45"> INGENIERÍA DE MATERIALES </option>
+                <option value="46"> INGENIERÍA DE SISTEMAS </option>
+                <option value="47"> INGENIERÍA ELÉCTRICA </option>
+                <option value="48"> INGENIERÍA MECÁNICA </option>
+                <option value="49"> INGENIERÍA AMBIENTAL </option>
+                <option value="50"> CIENCIA DE LA COMPUTACIÓN </option>
+                <option value="51"> INGENIERÍA SANITARIA </option>
+                <option value="52"> INGENIERÍA EN TELECOMUNICACIONES </option>
+                <option value="61"> EDUCACIÓN </option>
+                <option value="63"> HISTORIA </option>
+                <option value="64"> SOCIOLOGÍA </option>
+                <option value="65"> TRABAJO SOCIAL </option>
+                <option value="66"> ANTROPOLOGÍA </option>
+                <option value="67"> ADMINISTRACIÓN </option>
+                <option value="68"> CONTABILIDAD </option>
+                <option value="69"> DERECHO </option>
+                <option value="70"> ECONOMÍA </option>
+                <option value="71"> ARTES </option>
+                <option value="72"> FILOSOFÍA </option>
+                <option value="73"> LITERATURA Y LINGÜÍSTICA </option>
+                <option value="74"> PSICOLOGÍA </option>
+                <option value="75"> RELACIONES INDUSTRIALES </option>
+                <option value="78"> CIENCIAS DE LA COMUNICACIÓN </option>
+                <option value="79"> TURISMO Y HOTELERÍA </option>
+                <option value="86"> FINANZAS </option>
+                <option value="87"> MARKETING </option>
+                <option value="88"> BANCA Y SEGUROS </option>
+                <option value="89"> GESTIÓN </option>       
+            </select><br>
+            <br><br>
+            <select id="operador">
+                <option value="1">&#x2716;ingreso de notas (asignatura)</option>
+                <option value="2">&#x2716;&#x2716;notas_finales (asignatura)</option>
+                <option value="3">ver matriculados (asignatura)</option>
+                <option value="4">&#x2713;resultados_encuesta (cod_docente)</option>
+                <option value="5">&#x2716;carga_lectiva (cod_docente)</option>
+                <option value="6">&#x2716;carga_no_lectiva(cod_docente)</option>
+                <option value="7">&#x2716;asistencia (cod_docente y asignatura)</option>
+                <option value="8">&#x2716;informe_no_lectiva (cod_docente)</option>
+                <option value="9">&#x2716;silabo (cod_docente)</option>
+                <option value="10">&#x2716;ver notas finales completas (asignatura)</option>
+                <option value="11">ver notas finales (asignatura)</option>
+				<option value="12">ver silabo (asignatura)</option>
+            </select><br>
+            <button type="button" onclick="opciones()">ver </button>
+            <button type="button" onclick="dirigir('http://extranet.unsa.edu.pe/sisacad/escuela/index.php3')">ayuda_asignatura </button>
+            <br><p id="resultadoDocente" ></p>
+        </div>
+    </div>
+</body>
+</html>

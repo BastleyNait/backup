@@ -1,0 +1,16 @@
+TYPE=VIEW
+query=select `dietas`.`cabecera pedido`.`CabPedCod` AS `CabPedCod`,`dietas`.`proveedores`.`ProNom` AS `ProNom`,`dietas`.`almacen`.`AlmCod` AS `AlmCod`,`dietas`.`granja`.`GraNom` AS `GraNom`,`dietas`.`empresa`.`EmpNom` AS `EmpNom` from (`dietas`.`cabecera pedido` join `dietas`.`proveedores`) join `dietas`.`almacen` join `dietas`.`granja` join `dietas`.`empresa`
+md5=ca26764c9cc64e24879af8c2350718d3
+updatable=1
+algorithm=0
+definer_user=root
+definer_host=localhost
+suid=2
+with_check_option=0
+timestamp=0001720389483141913
+create-version=2
+source=select `cabecera pedido`.CabPedCod, \nproveedores.ProNom, almacen.AlmCod, \ngranja.GraNom, empresa.EmpNom\nfrom `cabecera pedido` inner join proveedores, almacen,\ngranja, empresa
+client_cs_name=utf8mb4
+connection_cl_name=utf8mb4_general_ci
+view_body_utf8=select `dietas`.`cabecera pedido`.`CabPedCod` AS `CabPedCod`,`dietas`.`proveedores`.`ProNom` AS `ProNom`,`dietas`.`almacen`.`AlmCod` AS `AlmCod`,`dietas`.`granja`.`GraNom` AS `GraNom`,`dietas`.`empresa`.`EmpNom` AS `EmpNom` from (`dietas`.`cabecera pedido` join `dietas`.`proveedores`) join `dietas`.`almacen` join `dietas`.`granja` join `dietas`.`empresa`
+mariadb-version=100432
